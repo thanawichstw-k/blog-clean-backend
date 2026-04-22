@@ -52,7 +52,25 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddDbContext<BlogDbContext>(options =>
 {
-    options.UseNpgsql(builder.Configuration.GetConnectionString("Default"));
+    var host = builder.Configuration["ConnectionStrings:Host"];
+    var port = builder.Configuration["ConnectionStrings:Port"];
+    var database = builder.Configuration["ConnectionStrings:Database"];
+    var username = builder.Configuration["ConnectionStrings:Username"];
+    var password = builder.Configuration["ConnectionStrings:Password"];
+
+    string connectionString;
+
+    if (!string.IsNullOrWhiteSpace(host))
+    {
+        connectionString =
+            $"Host={host};Port={port};Database={database};Username={username};Password={password};SSL Mode=Require;Trust Server Certificate=true";
+    }
+    else
+    {
+        connectionString = builder.Configuration.GetConnectionString("Default");
+    }
+
+    options.UseNpgsql(connectionString);
 });
 
 builder.Services

@@ -270,8 +270,7 @@
               "RelativeToolTip": "src\\Blog.WebApi\\appsettings.json",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAABBAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-01-29T09:32:24.139Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-29T09:32:24.139Z"
             },
             {
               "$type": "Document",
@@ -283,8 +282,7 @@
               "RelativeToolTip": "src\\Blog.WebApi\\Controllers\\SearchController.cs",
               "ViewState": "AQIAABcAAAAAAAAAAAAQwDYAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-31T13:29:36.619Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-31T13:29:36.619Z"
             },
             {
               "$type": "Document",
@@ -294,7 +292,7 @@
               "RelativeDocumentMoniker": "src\\Blog.WebApi\\Program.cs",
               "ToolTip": "C:\\Users\\gun\\Desktop\\for SCG\\s\\\u0E25\u0E48\u0E32\u0E2A\u0E38\u0E14\\blog-clean-backend\\src\\Blog.WebApi\\Program.cs",
               "RelativeToolTip": "src\\Blog.WebApi\\Program.cs",
-              "ViewState": "AQIAAFgAAAAAAAAAAAAQwHcAAAAKAAAA",
+              "ViewState": "AQIAACoAAAAAAAAAAAAQwEkAAAADAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-31T12:22:37.442Z",
               "EditorCaption": ""
