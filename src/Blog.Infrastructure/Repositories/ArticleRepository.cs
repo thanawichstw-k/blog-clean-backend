@@ -52,7 +52,10 @@ public sealed class ArticleRepository : IArticleRepository
 
     public async Task ReplaceTagsAsync(long articleId, IReadOnlyCollection<long> tagIds, CancellationToken cancellationToken = default)
     {
-        var oldItems = await _dbContext.ArticleTags.Where(x => x.ArticleId == articleId).ToListAsync(cancellationToken);
+        var oldItems = await _dbContext.ArticleTags
+            .Where(x => x.ArticleId == articleId)
+            .ToListAsync(cancellationToken);
+
         _dbContext.ArticleTags.RemoveRange(oldItems);
 
         foreach (var tagId in tagIds.Distinct())
@@ -63,12 +66,17 @@ public sealed class ArticleRepository : IArticleRepository
 
     public async Task<PagedResultDto<ContentCardDto>> QueryAsync(ContentQueryDto query, CancellationToken cancellationToken = default)
     {
+        var page = query.Page <= 0 ? 1 : query.Page;
+        var pageSize = query.PageSize <= 0 ? 12 : query.PageSize;
+        var sort = (query.Sort ?? "latest").Trim().ToLowerInvariant();
+
         var dbQuery = _dbContext.Articles
             .AsNoTracking()
             .Include(x => x.Category)
             .Include(x => x.ArticleTags)
                 .ThenInclude(x => x.Tag)
-            .Where(x => x.DeletedAt == null);
+            .Where(x => x.DeletedAt == null)
+            .Where(x => x.Status == "published");
 
         if (!string.IsNullOrWhiteSpace(query.SourceType))
             dbQuery = dbQuery.Where(x => x.SourceType == query.SourceType);
@@ -80,7 +88,8 @@ public sealed class ArticleRepository : IArticleRepository
             dbQuery = dbQuery.Where(x => x.Category != null && x.Category.Slug == query.Category);
 
         if (!string.IsNullOrWhiteSpace(query.Tag))
-            dbQuery = dbQuery.Where(x => x.ArticleTags.Any(t => t.Tag.Slug == query.Tag || t.Tag.Name == query.Tag));
+            dbQuery = dbQuery.Where(x => x.ArticleTags.Any(t =>
+                t.Tag.Slug == query.Tag || t.Tag.Name == query.Tag));
 
         if (!string.IsNullOrWhiteSpace(query.DisplayType))
             dbQuery = dbQuery.Where(x => x.DisplayType == query.DisplayType);
@@ -93,26 +102,39 @@ public sealed class ArticleRepository : IArticleRepository
 
         if (!string.IsNullOrWhiteSpace(query.Q))
         {
-            var q = query.Q.Trim().ToLower();
+            var q = $"%{query.Q.Trim()}%";
+
             dbQuery = dbQuery.Where(x =>
-                x.Title.ToLower().Contains(q) ||
-                (x.Excerpt != null && x.Excerpt.ToLower().Contains(q)) ||
-                (x.SearchText != null && x.SearchText.ToLower().Contains(q)) ||
-                x.ArticleTags.Any(t => t.Tag.Name.ToLower().Contains(q) || t.Tag.Slug.ToLower().Contains(q)) ||
-                (x.Category != null && x.Category.Name.ToLower().Contains(q)));
+                EF.Functions.ILike(x.Title, q) ||
+                (x.Excerpt != null && EF.Functions.ILike(x.Excerpt, q)) ||
+                (x.SearchText != null && EF.Functions.ILike(x.SearchText, q)) ||
+                x.ArticleTags.Any(t =>
+                    EF.Functions.ILike(t.Tag.Name, q) ||
+                    EF.Functions.ILike(t.Tag.Slug, q)) ||
+                (x.Category != null && EF.Functions.ILike(x.Category.Name, q)));
         }
 
-        dbQuery = (query.Sort ?? "latest").ToLower() switch
+        dbQuery = sort switch
         {
-            "popular" => dbQuery.OrderByDescending(x => x.PopularityScore).ThenByDescending(x => x.PublishedAt),
-            "priority" => dbQuery.OrderByDescending(x => x.PriorityScore).ThenByDescending(x => x.PublishedAt),
-            _ => dbQuery.OrderByDescending(x => x.PublishedAt).ThenByDescending(x => x.CreatedAt)
+            "popular" => dbQuery.OrderByDescending(x => x.PopularityScore)
+                                .ThenByDescending(x => x.PublishedAt)
+                                .ThenByDescending(x => x.CreatedAt),
+
+            "priority" => dbQuery.OrderByDescending(x => x.PriorityScore)
+                                 .ThenByDescending(x => x.PublishedAt)
+                                 .ThenByDescending(x => x.CreatedAt),
+
+            "oldest" => dbQuery.OrderBy(x => x.PublishedAt)
+                               .ThenBy(x => x.CreatedAt),
+
+            "newest" or "latest" => dbQuery.OrderByDescending(x => x.PublishedAt)
+                                           .ThenByDescending(x => x.CreatedAt),
+
+            _ => dbQuery.OrderByDescending(x => x.PublishedAt)
+                        .ThenByDescending(x => x.CreatedAt)
         };
 
         var total = await dbQuery.CountAsync(cancellationToken);
-
-        var page = query.Page <= 0 ? 1 : query.Page;
-        var pageSize = query.PageSize <= 0 ? 12 : query.PageSize;
 
         var items = await dbQuery
             .Skip((page - 1) * pageSize)
@@ -138,113 +160,17 @@ public sealed class ArticleRepository : IArticleRepository
                 .ThenInclude(x => x.Tag)
             .FirstOrDefaultAsync(x => x.Slug == slug && x.DeletedAt == null, cancellationToken);
 
-        if (entity is null) return null;
+        if (entity is null)
+            return null;
 
         return MapDetail(entity);
     }
 
-    //public async Task<List<ContentCardDto>> GetRelatedArticlesAsync(Guid articleId, int limit = 4)
-    //{
-    //    var currentArticle = await _dbContext.Articles
-    //        .AsNoTracking()
-    //        .Where(x => x.Id == articleId && x.IsPublished)
-    //        .Select(x => new
-    //        {
-    //            x.Id,
-    //            x.CategoryId,
-    //            TagIds = x.ArticleTags.Select(at => at.TagId).ToList()
-    //        })
-    //        .FirstOrDefaultAsync();
-
-    //    if (currentArticle == null)
-    //        return new List<ContentCardDto>();
-
-    //    return await _dbContext.Articles
-    //        .AsNoTracking()
-    //        .Where(x => x.IsPublished && x.Id != articleId)
-    //        .Where(x => x.CategoryId == currentArticle.CategoryId
-    //            || x.ArticleTags.Any(at => currentArticle.TagIds.Contains(at.TagId)))
-    //        .Select(x => new
-    //        {
-    //            Article = new ContentCardDto
-    //            {
-    //                Id = x.Id,
-    //                Slug = x.Slug,
-    //                Title = x.Title,
-    //                Summary = x.Summary,
-    //                CoverImageUrl = x.CoverImageUrl,
-    //                CategoryName = x.Category.Name,
-    //                PublishedAt = x.PublishedAt,
-    //                Tags = x.ArticleTags.Select(at => at.Tag.Name).ToList()
-    //            },
-    //            SameCategory = x.CategoryId == currentArticle.CategoryId ? 1 : 0,
-    //            SharedTagCount = x.ArticleTags.Count(at => currentArticle.TagIds.Contains(at.TagId)),
-    //            PublishedDate = x.PublishedAt ?? x.CreatedAt
-    //        })
-    //        .OrderByDescending(x => x.SharedTagCount)
-    //        .ThenByDescending(x => x.SameCategory)
-    //        .ThenByDescending(x => x.PublishedDate)
-    //        .Take(limit)
-    //        .Select(x => x.Article)
-    //        .ToListAsync();
-    //}
-
-    // Ẻ score
-    //public async Task<List<ArticleCardDto>> GetRelatedArticlesAsync(Guid articleId, int limit = 4)
-    //{
-    //    var currentArticle = await _context.Articles
-    //        .AsNoTracking()
-    //        .Where(x => x.Id == articleId && x.IsPublished)
-    //        .Select(x => new
-    //        {
-    //            x.Id,
-    //            x.CategoryId,
-    //            TagIds = x.ArticleTags.Select(at => at.TagId).ToList()
-    //        })
-    //        .FirstOrDefaultAsync();
-
-    //    if (currentArticle == null)
-    //        return new List<ArticleCardDto>();
-
-    //    return await _context.Articles
-    //        .AsNoTracking()
-    //        .Where(x => x.IsPublished && x.Id != articleId)
-    //        .Select(x => new
-    //        {
-    //            Article = new ArticleCardDto
-    //            {
-    //                Id = x.Id,
-    //                Slug = x.Slug,
-    //                Title = x.Title,
-    //                Summary = x.Summary,
-    //                CoverImageUrl = x.CoverImageUrl,
-    //                CategoryName = x.Category.Name,
-    //                PublishedAt = x.PublishedAt,
-    //                Tags = x.ArticleTags.Select(at => at.Tag.Name).ToList()
-    //            },
-    //            SameCategory = x.CategoryId == currentArticle.CategoryId ? 1 : 0,
-    //            SharedTagCount = x.ArticleTags.Count(at => currentArticle.TagIds.Contains(at.TagId)),
-    //            PublishedDate = x.PublishedAt ?? x.CreatedAt
-    //        })
-    //        .Select(x => new
-    //        {
-    //            x.Article,
-    //            x.PublishedDate,
-    //            Score = (x.SharedTagCount * 10) + (x.SameCategory * 3)
-    //        })
-    //        .Where(x => x.Score > 0)
-    //        .OrderByDescending(x => x.Score)
-    //        .ThenByDescending(x => x.PublishedDate)
-    //        .Take(limit)
-    //        .Select(x => x.Article)
-    //        .ToListAsync();
-    //}
-
     public async Task<IReadOnlyList<ContentCardDto>> GetRelatedAsync(
-    string slug,
-    string mode = "default",
-    int limit = 3,
-    CancellationToken cancellationToken = default)
+        string slug,
+        string mode = "default",
+        int limit = 3,
+        CancellationToken cancellationToken = default)
     {
         var current = await _dbContext.Articles
             .AsNoTracking()
@@ -257,7 +183,6 @@ public sealed class ArticleRepository : IArticleRepository
             return Array.Empty<ContentCardDto>();
 
         var currentTagIds = current.ArticleTags.Select(x => x.TagId).ToList();
-
         var normalizedMode = (mode ?? "default").Trim().ToLowerInvariant();
 
         var candidatesQuery = _dbContext.Articles
@@ -320,12 +245,14 @@ public sealed class ArticleRepository : IArticleRepository
         if (string.IsNullOrWhiteSpace(q))
             return Array.Empty<SearchSuggestDto>();
 
-        var query = q.Trim().ToLower();
+        var query = $"%{q.Trim()}%";
 
         var items = await _dbContext.Articles
             .AsNoTracking()
             .Where(x => x.DeletedAt == null && x.IsSearchable)
-            .Where(x => x.Title.ToLower().Contains(query) || x.Slug.ToLower().Contains(query))
+            .Where(x =>
+                EF.Functions.ILike(x.Title, query) ||
+                EF.Functions.ILike(x.Slug, query))
             .OrderByDescending(x => x.PriorityScore)
             .ThenByDescending(x => x.PopularityScore)
             .Take(limit)
@@ -354,8 +281,12 @@ public sealed class ArticleRepository : IArticleRepository
             ReadTime = x.ReadTime,
             Image = x.ImageUrl,
             Category = x.Category?.Slug,
-            Tags = x.ArticleTags.Select(t => t.Tag.Name).ToList(),
-            Content = DeserializeJsonElement(x.ContentJson),
+            Tags = x.ArticleTags
+                .Where(t => t.Tag != null)
+                .Select(t => t.Tag.Name)
+                .Where(name => !string.IsNullOrWhiteSpace(name))
+                .ToList(),
+            Content = null, // list endpoint ไม่ต้อง deserialize content ทั้งก้อน
             ContentType = x.ContentType,
             SourceType = x.SourceType,
             DisplayType = x.DisplayType,
@@ -393,7 +324,11 @@ public sealed class ArticleRepository : IArticleRepository
             ReadTime = x.ReadTime,
             Image = x.ImageUrl,
             Category = x.Category?.Slug,
-            Tags = x.ArticleTags.Select(t => t.Tag.Name).ToList(),
+            Tags = x.ArticleTags
+                .Where(t => t.Tag != null)
+                .Select(t => t.Tag.Name)
+                .Where(name => !string.IsNullOrWhiteSpace(name))
+                .ToList(),
             Content = DeserializeJsonElement(x.ContentJson),
             ContentType = x.ContentType,
             SourceType = x.SourceType,
@@ -419,16 +354,33 @@ public sealed class ArticleRepository : IArticleRepository
         };
     }
 
-    private static object? DeserializeJsonElement(System.Text.Json.JsonDocument jsonDocument)
+    private static object? DeserializeJsonElement(JsonDocument? jsonDocument)
     {
-        return JsonSerializer.Deserialize<object>(jsonDocument.RootElement.GetRawText());
+        if (jsonDocument is null)
+            return null;
+
+        try
+        {
+            return JsonSerializer.Deserialize<object>(jsonDocument.RootElement.GetRawText());
+        }
+        catch
+        {
+            return null;
+        }
     }
 
-    private static List<string> DeserializeStringList(System.Text.Json.JsonDocument? jsonDocument)
+    private static List<string> DeserializeStringList(JsonDocument? jsonDocument)
     {
         if (jsonDocument is null)
             return new List<string>();
 
-        return JsonSerializer.Deserialize<List<string>>(jsonDocument.RootElement.GetRawText()) ?? new List<string>();
+        try
+        {
+            return JsonSerializer.Deserialize<List<string>>(jsonDocument.RootElement.GetRawText()) ?? new List<string>();
+        }
+        catch
+        {
+            return new List<string>();
+        }
     }
 }
