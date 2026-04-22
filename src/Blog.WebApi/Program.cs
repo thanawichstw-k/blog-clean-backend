@@ -4,6 +4,7 @@ using Blog.Infrastructure.Data;
 using Blog.Infrastructure.Identity;
 using Blog.Infrastructure.Seed;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -121,8 +122,6 @@ builder.Services.AddInfrastructureServices();
 
 var app = builder.Build();
 
-app.MapGet("/", () => Results.Ok("API is running"));
-
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -130,8 +129,31 @@ if (app.Environment.IsDevelopment())
 }
 else
 {
-    app.UseExceptionHandler("/error");
+    app.UseExceptionHandler(errorApp =>
+    {
+        errorApp.Run(async context =>
+        {
+            var exceptionFeature = context.Features.Get<IExceptionHandlerFeature>();
+            var logger = context.RequestServices.GetRequiredService<ILoggerFactory>()
+                .CreateLogger("GlobalExceptionHandler");
+
+            if (exceptionFeature?.Error is not null)
+            {
+                logger.LogError(exceptionFeature.Error, "Unhandled exception for request {Path}", context.Request.Path);
+            }
+
+            context.Response.StatusCode = StatusCodes.Status500InternalServerError;
+            context.Response.ContentType = "application/json";
+
+            await context.Response.WriteAsJsonAsync(new
+            {
+                message = "Internal server error"
+            });
+        });
+    });
 }
+
+app.MapGet("/", () => Results.Ok(new { message = "API is running" }));
 
 app.UseCors("Frontend");
 
@@ -144,11 +166,6 @@ if (app.Environment.IsDevelopment())
 {
     var solutionRoot = FindSolutionRoot(app.Environment.ContentRootPath);
     var dbJsonPath = Path.Combine(solutionRoot, "db.json");
-
-    System.Diagnostics.Debug.WriteLine($"[MYLOG] contentRoot = {app.Environment.ContentRootPath}");
-    System.Diagnostics.Debug.WriteLine($"[MYLOG] solutionRoot = {solutionRoot}");
-    System.Diagnostics.Debug.WriteLine($"[MYLOG] dbJsonPath = {dbJsonPath}");
-    System.Diagnostics.Debug.WriteLine($"[MYLOG] dbJsonExists = {File.Exists(dbJsonPath)}");
 
     if (File.Exists(dbJsonPath))
     {
