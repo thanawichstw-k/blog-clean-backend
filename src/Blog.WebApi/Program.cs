@@ -101,13 +101,20 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-var solutionRoot = FindSolutionRoot(app.Environment.ContentRootPath);
-var dbJsonPath = Path.Combine(solutionRoot, "db.json");
+if (app.Environment.IsDevelopment())
+{
+    var solutionRoot = FindSolutionRoot(app.Environment.ContentRootPath);
+    var dbJsonPath = Path.Combine(solutionRoot, "db.json");
 
-System.Diagnostics.Debug.WriteLine($"[MYLOG] contentRoot = {app.Environment.ContentRootPath}");
-System.Diagnostics.Debug.WriteLine($"[MYLOG] solutionRoot = {solutionRoot}");
-System.Diagnostics.Debug.WriteLine($"[MYLOG] dbJsonPath = {dbJsonPath}");
-System.Diagnostics.Debug.WriteLine($"[MYLOG] dbJsonExists = {File.Exists(dbJsonPath)}");
-await DbInitializer.InitializeAsync(app.Services, dbJsonPath);
+    System.Diagnostics.Debug.WriteLine($"[MYLOG] contentRoot = {app.Environment.ContentRootPath}");
+    System.Diagnostics.Debug.WriteLine($"[MYLOG] solutionRoot = {solutionRoot}");
+    System.Diagnostics.Debug.WriteLine($"[MYLOG] dbJsonPath = {dbJsonPath}");
+    System.Diagnostics.Debug.WriteLine($"[MYLOG] dbJsonExists = {File.Exists(dbJsonPath)}");
+
+    if (File.Exists(dbJsonPath))
+    {
+        await DbInitializer.InitializeAsync(app.Services, dbJsonPath);
+    }
+}
 
 app.Run();
