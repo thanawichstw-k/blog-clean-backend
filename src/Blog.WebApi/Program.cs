@@ -53,34 +53,11 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddDbContext<BlogDbContext>(options =>
 {
-    var host = builder.Configuration["ConnectionStrings:Host"];
-    var port = builder.Configuration["ConnectionStrings:Port"];
-    var database = builder.Configuration["ConnectionStrings:Database"];
-    var username = builder.Configuration["ConnectionStrings:Username"];
-    var password = builder.Configuration["ConnectionStrings:Password"];
+    var connectionString = builder.Configuration.GetConnectionString("Default");
 
-    string connectionString;
-
-    if (!string.IsNullOrWhiteSpace(host) &&
-        !string.IsNullOrWhiteSpace(port) &&
-        !string.IsNullOrWhiteSpace(database) &&
-        !string.IsNullOrWhiteSpace(username) &&
-        !string.IsNullOrWhiteSpace(password))
+    if (string.IsNullOrWhiteSpace(connectionString))
     {
-        connectionString =
-            $"Host={host};Port={port};Database={database};Username={username};Password={password};SSL Mode=Require;Trust Server Certificate=true";
-    }
-    else
-    {
-        var defaultConnection = builder.Configuration.GetConnectionString("Default");
-
-        if (builder.Environment.IsProduction())
-        {
-            throw new InvalidOperationException("Production database environment variables are missing.");
-        }
-
-        connectionString = defaultConnection
-            ?? throw new InvalidOperationException("Default connection string is missing.");
+        throw new InvalidOperationException("ConnectionStrings:Default is missing.");
     }
 
     options.UseNpgsql(connectionString);
@@ -117,7 +94,6 @@ builder.Services
     });
 
 builder.Services.AddAuthorization();
-
 builder.Services.AddInfrastructureServices();
 
 var app = builder.Build();
@@ -156,7 +132,6 @@ else
 app.MapGet("/", () => Results.Ok(new { message = "API is running" }));
 
 app.UseCors("Frontend");
-
 app.UseAuthentication();
 app.UseAuthorization();
 
