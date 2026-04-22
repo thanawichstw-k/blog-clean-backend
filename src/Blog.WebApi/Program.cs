@@ -121,8 +121,17 @@ builder.Services.AddInfrastructureServices();
 
 var app = builder.Build();
 
-app.UseSwagger();
-app.UseSwaggerUI();
+app.MapGet("/", () => Results.Ok("API is running"));
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+else
+{
+    app.UseExceptionHandler("/error");
+}
 
 app.UseCors("Frontend");
 
