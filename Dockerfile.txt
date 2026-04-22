@@ -1,0 +1,20 @@
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /src
+
+COPY ["Blog.sln", "./"]
+COPY ["src/Blog.Domain/Blog.Domain.csproj", "src/Blog.Domain/"]
+COPY ["src/Blog.Application/Blog.Application.csproj", "src/Blog.Application/"]
+COPY ["src/Blog.Infrastructure/Blog.Infrastructure.csproj", "src/Blog.Infrastructure/"]
+COPY ["src/Blog.WebApi/Blog.WebApi.csproj", "src/Blog.WebApi/"]
+
+RUN dotnet restore "src/Blog.WebApi/Blog.WebApi.csproj"
+
+COPY . .
+WORKDIR "/src/src/Blog.WebApi"
+RUN dotnet publish "Blog.WebApi.csproj" -c Release -o /app/publish /p:UseAppHost=false
+
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
+WORKDIR /app
+COPY --from=build /app/publish .
+
+ENTRYPOINT ["dotnet", "Blog.WebApi.dll"]
