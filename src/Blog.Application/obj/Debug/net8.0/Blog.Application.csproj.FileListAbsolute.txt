@@ -13,3 +13,4 @@ C:\Users\gun\Desktop\for SCG\s\ล่าสุด\blog-clean-backend\src\Blog.Ap
 C:\Users\gun\Desktop\for SCG\s\ล่าสุด\blog-clean-backend\src\Blog.Application\obj\Debug\net8.0\refint\Blog.Application.dll
 C:\Users\gun\Desktop\for SCG\s\ล่าสุด\blog-clean-backend\src\Blog.Application\obj\Debug\net8.0\Blog.Application.pdb
 C:\Users\gun\Desktop\for SCG\s\ล่าสุด\blog-clean-backend\src\Blog.Application\obj\Debug\net8.0\ref\Blog.Application.dll
+C:\Users\gun\Desktop\for SCG\s\ล่าสุด\blog-clean-backend\src\Blog.Application\obj\Debug\net8.0\Blog.Application.sourcelink.json

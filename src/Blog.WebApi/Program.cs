@@ -60,14 +60,26 @@ builder.Services.AddDbContext<BlogDbContext>(options =>
 
     string connectionString;
 
-    if (!string.IsNullOrWhiteSpace(host))
+    if (!string.IsNullOrWhiteSpace(host) &&
+        !string.IsNullOrWhiteSpace(port) &&
+        !string.IsNullOrWhiteSpace(database) &&
+        !string.IsNullOrWhiteSpace(username) &&
+        !string.IsNullOrWhiteSpace(password))
     {
         connectionString =
             $"Host={host};Port={port};Database={database};Username={username};Password={password};SSL Mode=Require;Trust Server Certificate=true";
     }
     else
     {
-        connectionString = builder.Configuration.GetConnectionString("Default");
+        var defaultConnection = builder.Configuration.GetConnectionString("Default");
+
+        if (builder.Environment.IsProduction())
+        {
+            throw new InvalidOperationException("Production database environment variables are missing.");
+        }
+
+        connectionString = defaultConnection
+            ?? throw new InvalidOperationException("Default connection string is missing.");
     }
 
     options.UseNpgsql(connectionString);

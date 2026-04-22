@@ -7,12 +7,16 @@
       "RelativeMoniker": "D:0:0:{21E4FE00-228D-41FF-87B4-3BBE96EF6F42}|src\\Blog.WebApi\\Blog.WebApi.csproj|solutionrelative:src\\blog.webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{21E4FE00-228D-41FF-87B4-3BBE96EF6F42}|src\\Blog.WebApi\\Blog.WebApi.csproj|c:\\users\\gun\\desktop\\for scg\\s\\\u0E25\u0E48\u0E32\u0E2A\u0E38\u0E14\\blog-clean-backend\\src\\blog.webapi\\controllers\\searchcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{21E4FE00-228D-41FF-87B4-3BBE96EF6F42}|src\\Blog.WebApi\\Blog.WebApi.csproj|solutionrelative:src\\blog.webapi\\controllers\\searchcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{21E4FE00-228D-41FF-87B4-3BBE96EF6F42}|src\\Blog.WebApi\\Blog.WebApi.csproj|c:\\users\\gun\\desktop\\for scg\\s\\\u0E25\u0E48\u0E32\u0E2A\u0E38\u0E14\\blog-clean-backend\\src\\blog.webapi\\controllers\\articlescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{21E4FE00-228D-41FF-87B4-3BBE96EF6F42}|src\\Blog.WebApi\\Blog.WebApi.csproj|solutionrelative:src\\blog.webapi\\controllers\\articlescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{21E4FE00-228D-41FF-87B4-3BBE96EF6F42}|src\\Blog.WebApi\\Blog.WebApi.csproj|c:\\users\\gun\\desktop\\for scg\\s\\\u0E25\u0E48\u0E32\u0E2A\u0E38\u0E14\\blog-clean-backend\\src\\blog.webapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{21E4FE00-228D-41FF-87B4-3BBE96EF6F42}|src\\Blog.WebApi\\Blog.WebApi.csproj|solutionrelative:src\\blog.webapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{21E4FE00-228D-41FF-87B4-3BBE96EF6F42}|src\\Blog.WebApi\\Blog.WebApi.csproj|c:\\users\\gun\\desktop\\for scg\\s\\\u0E25\u0E48\u0E32\u0E2A\u0E38\u0E14\\blog-clean-backend\\src\\blog.webapi\\controllers\\searchcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{21E4FE00-228D-41FF-87B4-3BBE96EF6F42}|src\\Blog.WebApi\\Blog.WebApi.csproj|solutionrelative:src\\blog.webapi\\controllers\\searchcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2511F7ED-4B66-4CBC-BCF4-C4552DC0B02A}|src\\Blog.Infrastructure\\Blog.Infrastructure.csproj|c:\\users\\gun\\desktop\\for scg\\s\\\u0E25\u0E48\u0E32\u0E2A\u0E38\u0E14\\blog-clean-backend\\src\\blog.infrastructure\\data\\blogdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -49,10 +53,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{D5DA90FD-EDD0-4296-93C7-02015B289068}|src\\Blog.Application\\Blog.Application.csproj|c:\\users\\gun\\desktop\\for scg\\s\\\u0E25\u0E48\u0E32\u0E2A\u0E38\u0E14\\blog-clean-backend\\src\\blog.application\\repositories\\iarticlerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D5DA90FD-EDD0-4296-93C7-02015B289068}|src\\Blog.Application\\Blog.Application.csproj|solutionrelative:src\\blog.application\\repositories\\iarticlerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{21E4FE00-228D-41FF-87B4-3BBE96EF6F42}|src\\Blog.WebApi\\Blog.WebApi.csproj|c:\\users\\gun\\desktop\\for scg\\s\\\u0E25\u0E48\u0E32\u0E2A\u0E38\u0E14\\blog-clean-backend\\src\\blog.webapi\\controllers\\articlescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{21E4FE00-228D-41FF-87B4-3BBE96EF6F42}|src\\Blog.WebApi\\Blog.WebApi.csproj|solutionrelative:src\\blog.webapi\\controllers\\articlescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D5DA90FD-EDD0-4296-93C7-02015B289068}|src\\Blog.Application\\Blog.Application.csproj|c:\\users\\gun\\desktop\\for scg\\s\\\u0E25\u0E48\u0E32\u0E2A\u0E38\u0E14\\blog-clean-backend\\src\\blog.application\\usecases\\articleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -177,20 +177,12 @@
           "SelectedChildIndex": 9,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "IArticleRepository.cs",
-              "DocumentMoniker": "C:\\Users\\gun\\Desktop\\for SCG\\s\\\u0E25\u0E48\u0E32\u0E2A\u0E38\u0E14\\blog-clean-backend\\src\\Blog.Application\\Repositories\\IArticleRepository.cs",
-              "RelativeDocumentMoniker": "src\\Blog.Application\\Repositories\\IArticleRepository.cs",
-              "ToolTip": "C:\\Users\\gun\\Desktop\\for SCG\\s\\\u0E25\u0E48\u0E32\u0E2A\u0E38\u0E14\\blog-clean-backend\\src\\Blog.Application\\Repositories\\IArticleRepository.cs",
-              "RelativeToolTip": "src\\Blog.Application\\Repositories\\IArticleRepository.cs",
-              "ViewState": "AQIAABEAAAAAAAAAAIA8wB0AAAAqAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-18T19:41:28.335Z"
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "ArticleDtos.cs",
               "DocumentMoniker": "C:\\Users\\gun\\Desktop\\for SCG\\s\\\u0E25\u0E48\u0E32\u0E2A\u0E38\u0E14\\blog-clean-backend\\src\\Blog.Application\\DTOs\\ArticleDtos.cs",
               "RelativeDocumentMoniker": "src\\Blog.Application\\DTOs\\ArticleDtos.cs",
@@ -202,7 +194,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "DbInitializer.cs",
               "DocumentMoniker": "C:\\Users\\gun\\Desktop\\for SCG\\s\\\u0E25\u0E48\u0E32\u0E2A\u0E38\u0E14\\blog-clean-backend\\src\\Blog.Infrastructure\\Seed\\DbInitializer.cs",
               "RelativeDocumentMoniker": "src\\Blog.Infrastructure\\Seed\\DbInitializer.cs",
@@ -214,7 +206,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "DesignTimeDbContextFactory.cs",
               "DocumentMoniker": "C:\\Users\\gun\\Desktop\\for SCG\\s\\\u0E25\u0E48\u0E32\u0E2A\u0E38\u0E14\\blog-clean-backend\\src\\Blog.Infrastructure\\Data\\DesignTimeDbContextFactory.cs",
               "RelativeDocumentMoniker": "src\\Blog.Infrastructure\\Data\\DesignTimeDbContextFactory.cs",
@@ -226,7 +218,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "ArticleConfiguration.cs",
               "DocumentMoniker": "C:\\Users\\gun\\Desktop\\for SCG\\s\\\u0E25\u0E48\u0E32\u0E2A\u0E38\u0E14\\blog-clean-backend\\src\\Blog.Infrastructure\\Data\\Configurations\\ArticleConfiguration.cs",
               "RelativeDocumentMoniker": "src\\Blog.Infrastructure\\Data\\Configurations\\ArticleConfiguration.cs",
@@ -238,7 +230,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Blog.Infrastructure.csproj",
               "DocumentMoniker": "C:\\Users\\gun\\Desktop\\for SCG\\s\\\u0E25\u0E48\u0E32\u0E2A\u0E38\u0E14\\blog-clean-backend\\src\\Blog.Infrastructure\\Blog.Infrastructure.csproj",
               "RelativeDocumentMoniker": "src\\Blog.Infrastructure\\Blog.Infrastructure.csproj",
@@ -250,7 +242,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "BlogDbContext.cs",
               "DocumentMoniker": "C:\\Users\\gun\\Desktop\\for SCG\\s\\\u0E25\u0E48\u0E32\u0E2A\u0E38\u0E14\\blog-clean-backend\\src\\Blog.Infrastructure\\Data\\BlogDbContext.cs",
               "RelativeDocumentMoniker": "src\\Blog.Infrastructure\\Data\\BlogDbContext.cs",
@@ -268,13 +260,14 @@
               "RelativeDocumentMoniker": "src\\Blog.WebApi\\appsettings.json",
               "ToolTip": "C:\\Users\\gun\\Desktop\\for SCG\\s\\\u0E25\u0E48\u0E32\u0E2A\u0E38\u0E14\\blog-clean-backend\\src\\Blog.WebApi\\appsettings.json",
               "RelativeToolTip": "src\\Blog.WebApi\\appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAABBAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAACKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-01-29T09:32:24.139Z"
+              "WhenOpened": "2026-01-29T09:32:24.139Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "SearchController.cs",
               "DocumentMoniker": "C:\\Users\\gun\\Desktop\\for SCG\\s\\\u0E25\u0E48\u0E32\u0E2A\u0E38\u0E14\\blog-clean-backend\\src\\Blog.WebApi\\Controllers\\SearchController.cs",
               "RelativeDocumentMoniker": "src\\Blog.WebApi\\Controllers\\SearchController.cs",
@@ -292,7 +285,7 @@
               "RelativeDocumentMoniker": "src\\Blog.WebApi\\Program.cs",
               "ToolTip": "C:\\Users\\gun\\Desktop\\for SCG\\s\\\u0E25\u0E48\u0E32\u0E2A\u0E38\u0E14\\blog-clean-backend\\src\\Blog.WebApi\\Program.cs",
               "RelativeToolTip": "src\\Blog.WebApi\\Program.cs",
-              "ViewState": "AQIAACoAAAAAAAAAAAAQwEkAAAADAAAA",
+              "ViewState": "AQIAAHYAAAAAAAAAAAAQwJUAAAAKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-31T12:22:37.442Z",
               "EditorCaption": ""
@@ -323,7 +316,32 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 1,
+              "Title": "ArticlesController.cs",
+              "DocumentMoniker": "C:\\Users\\gun\\Desktop\\for SCG\\s\\\u0E25\u0E48\u0E32\u0E2A\u0E38\u0E14\\blog-clean-backend\\src\\Blog.WebApi\\Controllers\\ArticlesController.cs",
+              "RelativeDocumentMoniker": "src\\Blog.WebApi\\Controllers\\ArticlesController.cs",
+              "ToolTip": "C:\\Users\\gun\\Desktop\\for SCG\\s\\\u0E25\u0E48\u0E32\u0E2A\u0E38\u0E14\\blog-clean-backend\\src\\Blog.WebApi\\Controllers\\ArticlesController.cs",
+              "RelativeToolTip": "src\\Blog.WebApi\\Controllers\\ArticlesController.cs",
+              "ViewState": "AQIAABYAAAAAAAAAAAAQwCUAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-29T09:31:36.796Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "IArticleRepository.cs",
+              "DocumentMoniker": "C:\\Users\\gun\\Desktop\\for SCG\\s\\\u0E25\u0E48\u0E32\u0E2A\u0E38\u0E14\\blog-clean-backend\\src\\Blog.Application\\Repositories\\IArticleRepository.cs",
+              "RelativeDocumentMoniker": "src\\Blog.Application\\Repositories\\IArticleRepository.cs",
+              "ToolTip": "C:\\Users\\gun\\Desktop\\for SCG\\s\\\u0E25\u0E48\u0E32\u0E2A\u0E38\u0E14\\blog-clean-backend\\src\\Blog.Application\\Repositories\\IArticleRepository.cs",
+              "RelativeToolTip": "src\\Blog.Application\\Repositories\\IArticleRepository.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAIA8wB0AAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-18T19:41:28.335Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "SearchService.cs",
               "DocumentMoniker": "C:\\Users\\gun\\Desktop\\for SCG\\s\\\u0E25\u0E48\u0E32\u0E2A\u0E38\u0E14\\blog-clean-backend\\src\\Blog.Infrastructure\\Services\\SearchService.cs",
               "RelativeDocumentMoniker": "src\\Blog.Infrastructure\\Services\\SearchService.cs",
@@ -335,7 +353,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "ArticleRepository.cs",
               "DocumentMoniker": "C:\\Users\\gun\\Desktop\\for SCG\\s\\\u0E25\u0E48\u0E32\u0E2A\u0E38\u0E14\\blog-clean-backend\\src\\Blog.Infrastructure\\Repositories\\ArticleRepository.cs",
               "RelativeDocumentMoniker": "src\\Blog.Infrastructure\\Repositories\\ArticleRepository.cs",
@@ -356,18 +374,6 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAqwAwAAAAzAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-31T13:26:33.361Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "ArticlesController.cs",
-              "DocumentMoniker": "C:\\Users\\gun\\Desktop\\for SCG\\s\\\u0E25\u0E48\u0E32\u0E2A\u0E38\u0E14\\blog-clean-backend\\src\\Blog.WebApi\\Controllers\\ArticlesController.cs",
-              "RelativeDocumentMoniker": "src\\Blog.WebApi\\Controllers\\ArticlesController.cs",
-              "ToolTip": "C:\\Users\\gun\\Desktop\\for SCG\\s\\\u0E25\u0E48\u0E32\u0E2A\u0E38\u0E14\\blog-clean-backend\\src\\Blog.WebApi\\Controllers\\ArticlesController.cs",
-              "RelativeToolTip": "src\\Blog.WebApi\\Controllers\\ArticlesController.cs",
-              "ViewState": "AQIAAC8AAAAAAAAAAAAWwCEAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-29T09:31:36.796Z"
             },
             {
               "$type": "Document",
@@ -668,10 +674,6 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-30T09:26:21.683Z"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             }
           ]
         }

@@ -123,3 +123,4 @@ C:\Users\gun\Desktop\for SCG\s\ล่าสุด\blog-clean-backend\src\Blog.We
 C:\Users\gun\Desktop\for SCG\s\ล่าสุด\blog-clean-backend\src\Blog.WebApi\obj\Debug\net8.0\Blog.WebApi.pdb
 C:\Users\gun\Desktop\for SCG\s\ล่าสุด\blog-clean-backend\src\Blog.WebApi\obj\Debug\net8.0\Blog.WebApi.genruntimeconfig.cache
 C:\Users\gun\Desktop\for SCG\s\ล่าสุด\blog-clean-backend\src\Blog.WebApi\obj\Debug\net8.0\ref\Blog.WebApi.dll
+C:\Users\gun\Desktop\for SCG\s\ล่าสุด\blog-clean-backend\src\Blog.WebApi\obj\Debug\net8.0\Blog.WebApi.sourcelink.json
