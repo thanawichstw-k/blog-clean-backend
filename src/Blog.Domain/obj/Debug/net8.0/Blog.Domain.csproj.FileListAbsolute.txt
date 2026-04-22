@@ -1,0 +1,11 @@
+C:\Users\gun\Desktop\for SCG\s\ล่าสุด\blog-clean-backend\src\Blog.Domain\bin\Debug\net8.0\Blog.Domain.deps.json
+C:\Users\gun\Desktop\for SCG\s\ล่าสุด\blog-clean-backend\src\Blog.Domain\bin\Debug\net8.0\Blog.Domain.dll
+C:\Users\gun\Desktop\for SCG\s\ล่าสุด\blog-clean-backend\src\Blog.Domain\bin\Debug\net8.0\Blog.Domain.pdb
+C:\Users\gun\Desktop\for SCG\s\ล่าสุด\blog-clean-backend\src\Blog.Domain\obj\Debug\net8.0\Blog.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gun\Desktop\for SCG\s\ล่าสุด\blog-clean-backend\src\Blog.Domain\obj\Debug\net8.0\Blog.Domain.AssemblyInfoInputs.cache
+C:\Users\gun\Desktop\for SCG\s\ล่าสุด\blog-clean-backend\src\Blog.Domain\obj\Debug\net8.0\Blog.Domain.AssemblyInfo.cs
+C:\Users\gun\Desktop\for SCG\s\ล่าสุด\blog-clean-backend\src\Blog.Domain\obj\Debug\net8.0\Blog.Domain.csproj.CoreCompileInputs.cache
+C:\Users\gun\Desktop\for SCG\s\ล่าสุด\blog-clean-backend\src\Blog.Domain\obj\Debug\net8.0\Blog.Domain.dll
+C:\Users\gun\Desktop\for SCG\s\ล่าสุด\blog-clean-backend\src\Blog.Domain\obj\Debug\net8.0\refint\Blog.Domain.dll
+C:\Users\gun\Desktop\for SCG\s\ล่าสุด\blog-clean-backend\src\Blog.Domain\obj\Debug\net8.0\Blog.Domain.pdb
+C:\Users\gun\Desktop\for SCG\s\ล่าสุด\blog-clean-backend\src\Blog.Domain\obj\Debug\net8.0\ref\Blog.Domain.dll

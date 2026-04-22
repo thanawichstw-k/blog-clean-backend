@@ -1,0 +1,15 @@
+C:\Users\gun\Desktop\for SCG\s\ล่าสุด\blog-clean-backend\src\Blog.Application\bin\Debug\net8.0\Blog.Application.deps.json
+C:\Users\gun\Desktop\for SCG\s\ล่าสุด\blog-clean-backend\src\Blog.Application\bin\Debug\net8.0\Blog.Application.dll
+C:\Users\gun\Desktop\for SCG\s\ล่าสุด\blog-clean-backend\src\Blog.Application\bin\Debug\net8.0\Blog.Application.pdb
+C:\Users\gun\Desktop\for SCG\s\ล่าสุด\blog-clean-backend\src\Blog.Application\bin\Debug\net8.0\Blog.Domain.dll
+C:\Users\gun\Desktop\for SCG\s\ล่าสุด\blog-clean-backend\src\Blog.Application\bin\Debug\net8.0\Blog.Domain.pdb
+C:\Users\gun\Desktop\for SCG\s\ล่าสุด\blog-clean-backend\src\Blog.Application\obj\Debug\net8.0\Blog.Application.csproj.AssemblyReference.cache
+C:\Users\gun\Desktop\for SCG\s\ล่าสุด\blog-clean-backend\src\Blog.Application\obj\Debug\net8.0\Blog.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gun\Desktop\for SCG\s\ล่าสุด\blog-clean-backend\src\Blog.Application\obj\Debug\net8.0\Blog.Application.AssemblyInfoInputs.cache
+C:\Users\gun\Desktop\for SCG\s\ล่าสุด\blog-clean-backend\src\Blog.Application\obj\Debug\net8.0\Blog.Application.AssemblyInfo.cs
+C:\Users\gun\Desktop\for SCG\s\ล่าสุด\blog-clean-backend\src\Blog.Application\obj\Debug\net8.0\Blog.Application.csproj.CoreCompileInputs.cache
+C:\Users\gun\Desktop\for SCG\s\ล่าสุด\blog-clean-backend\src\Blog.Application\obj\Debug\net8.0\Blog.App.C7D7B2EA.Up2Date
+C:\Users\gun\Desktop\for SCG\s\ล่าสุด\blog-clean-backend\src\Blog.Application\obj\Debug\net8.0\Blog.Application.dll
+C:\Users\gun\Desktop\for SCG\s\ล่าสุด\blog-clean-backend\src\Blog.Application\obj\Debug\net8.0\refint\Blog.Application.dll
+C:\Users\gun\Desktop\for SCG\s\ล่าสุด\blog-clean-backend\src\Blog.Application\obj\Debug\net8.0\Blog.Application.pdb
+C:\Users\gun\Desktop\for SCG\s\ล่าสุด\blog-clean-backend\src\Blog.Application\obj\Debug\net8.0\ref\Blog.Application.dll
